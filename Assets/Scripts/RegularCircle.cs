@@ -18,7 +18,7 @@ public class RegularCircle : BaseCircle //INHERITANCE
 
     }
 
-    public override void RandomizeColor()
+    public override void RandomizeColor()//POLYMORPHISM
     {
         int i = Random.Range(1, 3);
     }
