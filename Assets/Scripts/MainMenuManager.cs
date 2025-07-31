@@ -5,9 +5,9 @@ public class MainMenuManager : MonoBehaviour
 {
     //ENCAPSULATION
     public static MainMenuManager Instance { get; private set; }
+    private int difficulty;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -19,7 +19,11 @@ public class MainMenuManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        difficulty = 1;
+    }
+
     void Update()
     {
 
@@ -35,7 +39,7 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void QuitApplication()
+    public void quitApplication()
     {
         Debug.Log("Quitting application...");
         Application.Quit();
@@ -44,5 +48,16 @@ public class MainMenuManager : MonoBehaviour
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
+    }
+
+    public void setDifficulty(int difficulty)
+    {
+        this.difficulty = difficulty;
+        Debug.Log("New difficulty is " + difficulty);
+    }
+
+    public int getDifficulty()
+    {
+        return this.difficulty;
     }
 }
